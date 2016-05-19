@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 var program = require('commander'),
-    Download = require('download'),
-    Dribbble = require('../Dribbble'),
-    VERSION = require('../package.json').version
+  Download = require('download'),
+  Dribbble = require('../Dribbble'),
+  VERSION = require('../package.json').version
 
 program.version(VERSION)
   .usage('<dribbble-shot-url>')
@@ -13,7 +13,7 @@ program.version(VERSION)
     var download = new Download()
 
     dribbble.on('ready', function (info) {
-      var folder = (program.output != undefined) ? program.output : './' + info.title      
+      var folder = (program.output != undefined) ? program.output : './' + info.title
 
       info.urls.map(function (img) {
         // add current img to the queue.

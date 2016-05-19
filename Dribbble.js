@@ -3,7 +3,7 @@ var EventEmitter = require('events'),
   jsdom = require('jsdom')
 
 // example
-// var shotUrl = 'https://dribbble.com/shots/1417422-Salesforce1-Mobile-Sketch-Wireframe-Kit'
+  // var shotUrl = 'https://dribbble.com/shots/1417422-Salesforce1-Mobile-Sketch-Wireframe-Kit'
 
 function Dribbble (shotUrl) {
   EventEmitter.call(this)

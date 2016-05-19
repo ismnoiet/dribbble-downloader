@@ -16,9 +16,9 @@ dribbble-downloader <shot-url>
 dribbble-downloader https://dribbble.com/shots/2487026-Dashboard-Form
 
 ``` 
-All the downloaded files will be stored automatically inside a folder named after the shot title, so for the previous example all tha images are stored in the **./Dashboard - Form** folder.
+All the downloaded files will be stored automatically inside a folder named after the shot title, so for the previous example all the images are stored in the **./Dashboard - Form** folder.
 
-Or we can specify our destination path using the ``-o``(``--output``) flag, here is an example : 
+**Or** we can specify our destination path using the ``-o``(``--output``) flag, here is an example : 
 ```
-	dribbble-downloader https://dribbble.com/shots/1417422-Salesforce1-Mobile-Sketch-Wireframe-Kit -o my-folder 
+dribbble-downloader https://dribbble.com/shots/2487026-Dashboard-Form -o my-folder 
 ```
