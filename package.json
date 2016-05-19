@@ -1,11 +1,11 @@
 {
   "name": "dribbble-downloader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Node.js CLI module to download images from dribbble",
   "scripts": {
     "test": "standard",
     "prepublish": "standard-format -w bin/dribbble-downloader ./Dribbble.js",
-    "lint":"standard-format -w bin/dribbble-downloader ./Dribbble.js"
+    "lint": "standard-format -w bin/dribbble-downloader ./Dribbble.js"
   },
   "author": "ismnoiet<ismnoiet@gmail.com>",
   "repository": {
