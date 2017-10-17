@@ -1,5 +1,6 @@
 var EventEmitter = require('events'),
   util = require('util'),
+  request = require('request'),
   jsdom = require('jsdom')
 
 // example
@@ -27,27 +28,33 @@ Dribbble.prototype.ready = function () {
 
 Dribbble.prototype.init = function () {
   var that = this
-  jsdom.env(
-    that.shotUrl,
-    [],
-    function (err, window) {
-      var originalUrls = []
-      var title
+  request(this.shotUrl, function (err, response, body) {
+    if (!err && response.statusCode === 200) {
+      return jsdom.env(
+        that.shotUrl,
+        [],
+        function (err, window) {
+          var originalUrls = []
+          var title
 
-      title = window.document.querySelector('h1').innerHTML
-      that.title = title
-      thumbnailUrls = window.document.querySelectorAll('img.thumb')
+          title = window.document.querySelector('h1').innerHTML
+          that.title = title
+          thumbnailUrls = window.document.querySelectorAll('img.thumb')
 
-      var count = thumbnailUrls.length
-      var i = 0
-      for (;i < count;i++) {
-        originalUrls.push(thumbnailUrls[i].src.replace('/thumbnail', ''))
-        that.add(originalUrls[i])
-      }
-      that.ready()
+          var count = thumbnailUrls.length
+          var i = 0
+          for (;i < count;i++) {
+            originalUrls.push(thumbnailUrls[i].src.replace('/thumbnail', ''))
+            that.add(originalUrls[i])
+          }
+          that.ready()
 
+        }
+      )
     }
-  )
+    console.log('Dribbble URL not found, may be it was removed :(')
+  })
+
   return this
 }
 
