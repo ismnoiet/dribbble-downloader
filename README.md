@@ -1,5 +1,5 @@
 ## Dribbble-downloader 
-A Node.js CLI tool to download images from [Dribbble](https://dribbble.com/).
+A Node.js CLI tool to download images(png & gif) from [Dribbble](https://dribbble.com/).
 
 ### Installation
 ```
@@ -22,6 +22,3 @@ All the downloaded files will be stored automatically inside a folder named afte
 ```
 dribbble-downloader https://dribbble.com/shots/2487026-Dashboard-Form -o my-folder 
 ```
-
-###Todo
-* Make it possible to download from multiple sources.

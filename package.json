@@ -1,6 +1,6 @@
 {
   "name": "dribbble-downloader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Node.js CLI module to download images from dribbble",
   "scripts": {
     "test": "standard",
