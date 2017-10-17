@@ -14,13 +14,27 @@ program.version(VERSION)
 
     dribbble.on('ready', function (info) {
       var folder = (program.output != undefined) ? program.output : './' + info.title
+      download.get(info.mainImgUrl)
+      if (info.attachments === false) {
+        console.log('No attachements, only the main image will be downloaded')
+      } else {
+        info.urls.map(function (img) {
+          // download every attachment img.
+          download.get(img)
+        })
+      }
+      console.log('Downloading ...')
 
-      info.urls.map(function (img) {
-        // add current img to the queue.
-        download.get(img)
-      })
       // specify the download directory  & start downloading.
-      download.dest(folder).run()
+      download.dest(folder).run(function (err, files) {
+        if (err) {
+          console.log('Error while downloading the files!')
+        } else {
+          var imgCounter = (info.urls.length + 1)
+          console.log(imgCounter + ' image' + (imgCounter > 1 ? 's' : '') + ' downloaded successfully')
+        }
+      })
+
     })
 
   })

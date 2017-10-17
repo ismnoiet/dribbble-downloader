@@ -23,7 +23,12 @@ Dribbble.prototype.add = function (url) {
 }
 
 Dribbble.prototype.ready = function () {
-  this.emit('ready', {urls: this.urls,title: this.title})
+  this.emit('ready',
+    {
+      mainImgUrl: this.mainImgUrl, title: this.title, urls: this.urls,
+      attachments: this.attachments,
+    }
+  )
 }
 
 Dribbble.prototype.init = function () {
@@ -37,18 +42,24 @@ Dribbble.prototype.init = function () {
           var originalUrls = []
           var title
 
-          title = window.document.querySelector('h1').innerHTML
+          var title = window.document.querySelector('h1').innerHTML
+          var mainImgUrl = window.document.querySelector('.the-shot .single-img img')
+          var thumbnailUrls = window.document.querySelectorAll('img.thumb')
           that.title = title
-          thumbnailUrls = window.document.querySelectorAll('img.thumb')
+          that.mainImgUrl = mainImgUrl.src
 
-          var count = thumbnailUrls.length
-          var i = 0
-          for (;i < count;i++) {
-            originalUrls.push(thumbnailUrls[i].src.replace('/thumbnail', ''))
-            that.add(originalUrls[i])
+          // there is no attachements 
+          if (thumbnailUrls.length === 0) {
+            that.attachments = false
+          } else {
+            var count = thumbnailUrls.length
+            var i = 0
+            for (;i < count;i++) {
+              originalUrls.push(thumbnailUrls[i].src.replace('/thumbnail', ''))
+              that.add(originalUrls[i])
+            }
           }
           that.ready()
-
         }
       )
     }
